@@ -1,0 +1,15 @@
+server:
+  port: 1030
+eureka:
+  client:
+    serviceUrl: #注册中心的注册地址
+      defaultZone: http://localhost:1010/eureka/
+  instance:
+    prefer-ip-address: true #使用IP注册
+    instance-id: www.order.com
+spring:
+  application:
+    name: service-order #服务名
+
+
+

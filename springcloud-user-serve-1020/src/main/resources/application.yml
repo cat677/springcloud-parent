@@ -1,0 +1,15 @@
+server:
+  port: 1020
+eureka:
+  client:
+    serviceUrl: #注册中心的注册地址
+      defaultZone: http://localhost:1010/eureka/
+  instance:
+    prefer-ip-address: true #使用IP注册
+    instance-id: www.user.com
+spring:
+  application:
+    name: service-user #服务名
+
+
+
