@@ -12,6 +12,7 @@
         <module>springcloud-eureka-server-1010</module>
         <module>springcloud-user-serve-1020</module>
         <module>springcloud-order-server-1030</module>
+        <module>springcloud-common-pojo</module>
     </modules>
     <!--公共的一些配置-->
     <properties>
@@ -48,6 +49,10 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 </project>

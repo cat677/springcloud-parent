@@ -1,15 +1,30 @@
+#注册到EurekaServer
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://admin:1234@peer1:1010/eureka/,http://admin:1234@ppeer2:1011/eureka/,http://admin:1234@ppeer3:1012/eureka/
+  #使用ip地址进行注册
+  instance:
+    prefer-ip-address: true
+spring:
+  application:
+    name: user-server  #服务名都叫user-server
+  profiles:
+    active: user-server1
+---
 server:
   port: 1020
 eureka:
-  client:
-    serviceUrl: #注册中心的注册地址
-      defaultZone: http://localhost:1010/eureka/
   instance:
-    prefer-ip-address: true #使用IP注册
-    instance-id: www.user.com
+    instance-id: user-server:1020
 spring:
-  application:
-    name: service-user #服务名
-
-
+  profiles: user-server1
+---
+server:
+  port: 1021
+eureka:
+  instance:
+    instance-id: user-server:1021
+spring:
+  profiles: user-server2
 

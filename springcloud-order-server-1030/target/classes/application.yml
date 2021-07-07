@@ -3,7 +3,7 @@ server:
 eureka:
   client:
     serviceUrl: #注册中心的注册地址
-      defaultZone: http://localhost:1010/eureka/
+      defaultZone: http://admin:1234@peer1:1010/eureka/,http://admin:1234@peer2:1011/eureka/,http://admin:1234@peer3:1012/eureka/
   instance:
     prefer-ip-address: true #使用IP注册
     instance-id: www.order.com

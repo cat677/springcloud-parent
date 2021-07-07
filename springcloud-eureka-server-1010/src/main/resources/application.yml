@@ -1,12 +1,47 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://admin:1234@peer1:1010/eureka/,http://admin:1234@peer2:1011/eureka/,http://admin:1234@peer3:1012/eureka/
+  instance:
+    prefer-ip-address: true
+  server:
+    enable-self-preservation: false #关闭自我保护警告o
+spring:
+  profiles:
+    active: peer1
+  application:
+    name: eureka-peer
+  security:
+    user:
+      name: admin
+      password: 1234
+---
+#peer1第一个Eureka
+spring:
+  profiles: peer1
 server:
   port: 1010  #端口
 eureka:
   instance:
-    hostname: localhost #主机
-  client: #客户端配置
-    registerWithEureka: false  #EurekaServer自己不要注册到EurekaServer自己 ，只有EurekaClient才注册
-    fetchRegistry: false  #EurekaServer不要拉取服务的通信地址列表 ，只有EurekaClient才拉取地址列表
-    serviceUrl:  #注册中心的注册地址
-      defaultZone: http://localhost:1010/eureka/  #http://${eureka.instance.hostname}:${server.port}/eureka/
-  server:
-    enable-self-preservation: false #关闭自我保护警告
+    hostname: peer1  #主机
+    instance-id: eureka-peer1:1010
+---
+#peer2第二个Eureka
+spring:
+  profiles: peer2
+server:
+  port: 1011  #端口
+eureka:
+  instance:
+    hostname: peer2  #主机
+    instance-id: eureka-peer2:1011
+---
+#peer3第三个Eureka
+spring:
+  profiles: peer3
+server:
+  port: 1012  #端口
+eureka:
+  instance:
+    hostname: peer3 #主机
+    instance-id: eureka-peer3:1012
