@@ -3,6 +3,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://admin:1234@peer1:1010/eureka/,http://admin:1234@ppeer2:1011/eureka/,http://admin:1234@ppeer3:1012/eureka/
+    registry-fetch-interval-seconds: 10 #服务发现的间隔时间
   #使用ip地址进行注册
   instance:
     prefer-ip-address: true

@@ -1,0 +1,31 @@
+server:
+  port: 1040
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://admin:1234@peer1:1010/eureka/,http://admin:1234@peer2:1011/eureka/,http://admin:1234@peer3:1012/eureka/
+    registry-fetch-interval-seconds: 10 #服务发现的间隔时间
+  instance:
+    instance-id: pay-server:1040 #实例ID
+    prefer-ip-address: true #使用ip注册到注册中心
+spring:
+  application:
+    name: pay-server
+logging:
+  level:
+    cn.itsource: debug
+#1.开启熔断
+feign:
+  hystrix:
+    enabled: true
+ribbon:
+  ReadTimeout: 3000
+  SocketTimeout: 3000
+  ConnectTimeout: 3000
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10300

@@ -13,6 +13,8 @@
         <module>springcloud-user-serve-1020</module>
         <module>springcloud-order-server-1030</module>
         <module>springcloud-common-pojo</module>
+        <module>springcloud-pay-server-1040</module>
+        <module>springcloud-zuul-server-1050</module>
     </modules>
     <!--公共的一些配置-->
     <properties>

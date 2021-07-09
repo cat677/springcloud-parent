@@ -6,10 +6,24 @@ eureka:
       defaultZone: http://admin:1234@peer1:1010/eureka/,http://admin:1234@peer2:1011/eureka/,http://admin:1234@peer3:1012/eureka/
   instance:
     prefer-ip-address: true #使用IP注册
-    instance-id: www.order.com
+    instance-id: order-server:1030
 spring:
   application:
-    name: service-order #服务名
+    name: order-server #服务名
 
-
-
+ribbon:
+  ReadTimeout: 1000					#读取超时时间
+  ConnectTimeout: 1000				#链接超时时间
+  MaxAutoRetries: 1 				#重试机制：同一台实例最大重试次数
+  MaxAutoRetriesNextServer: 1 		#重试负载均衡其他的实例最大重试次数
+  OkToRetryOnAllOperations: false  	#是否所有操作都重试，因为针对post请求如果没做幂等处理可能会造成数据多次添加/修改
+  eager-load:
+    enabled: true #开启饥饿加载
+    clients: service-user #针对于哪些服务需要饥饿加载
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000 #hystrix超时,置thread和semaphore两种隔离策略的超时时间
