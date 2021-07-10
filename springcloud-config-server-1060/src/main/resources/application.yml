@@ -1,0 +1,23 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://admin:1234@peer1:1010/eureka/,http://admin:1234@peer2:1011/eureka/,http://admin:1234@peer3:1012/eureka/ #注册中心地址
+  instance:
+    prefer-ip-address: true #使用ip地址注册
+    instance-id: config-server:1060  #指定服务的id
+server:
+  port: 1060
+spring:
+  application:
+    name: config-server #服务名
+  cloud:
+    config:
+      server:
+        git:
+          #配置远程仓库地址，去仓库中复制
+          uri: https://gitee.com/xi-jiahao/springcloud-config.git
+          username: 937181620@qq.com	#仓库是私有的需要账号
+          password: Aa840539
+          #search-paths: 路径 #如果配置文件不再仓库的根目录，需要配置查找路径
+#  profiles:
+#    active: native  #基于本地的配置

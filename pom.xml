@@ -15,6 +15,7 @@
         <module>springcloud-common-pojo</module>
         <module>springcloud-pay-server-1040</module>
         <module>springcloud-zuul-server-1050</module>
+        <module>springcloud-config-server-1060</module>
     </modules>
     <!--公共的一些配置-->
     <properties>
